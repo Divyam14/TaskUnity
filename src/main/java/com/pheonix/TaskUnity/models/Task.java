@@ -1,10 +1,7 @@
 package com.pheonix.TaskUnity.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +18,10 @@ import java.util.Date;
 @Table(schema = "core", name = "task")
 public class Task {
 
-    @Column(name = "task_id")
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "task_id")
     private int taskId;
     private String title;
     private String description;
