@@ -1,0 +1,24 @@
+//Origin set
+
+git remote add origin <url>
+
+
+//pull
+git pull origin
+
+
+//Add files to staging
+git add .
+
+// commit
+git commit -m "Message"
+
+//push
+git push origin main
+
+// branch
+git branch "branchname"
+
+//switch to branch
+git checkout "branchname"
+
