@@ -1,6 +1,7 @@
 package com.pheonix.TaskUnity.services;
 
 
+import com.pheonix.TaskUnity.Exceptions.NotFoundException;
 import com.pheonix.TaskUnity.models.Task;
 import com.pheonix.TaskUnity.repository.TaskRepository;
 import org.slf4j.Logger;
@@ -35,10 +36,23 @@ public class TaskService {
         try{
             Optional<Task> task = taskRepository.findById(id);
             if(task.isEmpty()){
-                throw new Exception("Task not found");
+                throw new NotFoundException();
             }
 
             return task.get();
+        }
+        catch (Exception e){
+            logger.error(e.getMessage());
+        }
+        return null;
+    }
+
+    public Task updateTask(int taskId,Task task){
+        try{
+            task.setTaskId(taskId);
+            Task updatedTask = taskRepository.save(task);
+
+            return updatedTask;
         }
         catch (Exception e){
             logger.error(e.getMessage());
